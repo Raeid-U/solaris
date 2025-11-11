@@ -71,13 +71,20 @@ export function calculatePrayerTimes(
   const maghribOffset = 3 / 60; // Currently set to 3 minutes after Sunset
   const maghrib = (sunset + maghribOffset + 24) % 24;
 
-  // temp: Hanafi Asr Time
-  const shadowRatio = 1;
+  // --- Hanafi Asr ---
+  const phi = toRadians(latitude);
+  const delta = declination;
+
+  // Hanafi: shadow = 2×object + zenith-shadow => cot(h) = 2 + tan(|φ-δ|)
+  const hAsr = Math.atan(1 / (2 + Math.tan(Math.abs(phi - delta))));
+
+  // Hour angle for that elevation
   const asrHA = Math.acos(
-    (Math.sin(Math.atan(shadowRatio)) +
-      Math.sin(toRadians(latitude)) * Math.sin(declination)) /
-      (Math.cos(toRadians(latitude)) * Math.cos(declination)),
+    (Math.sin(hAsr) - Math.sin(phi) * Math.sin(delta)) /
+      (Math.cos(phi) * Math.cos(delta)),
   );
+
+  // Asr time = Zuhr (solar noon) + HA/15
   const asr = (noon + toDegrees(asrHA) / 15 + 24) % 24;
 
   return {
