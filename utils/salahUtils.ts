@@ -1,26 +1,49 @@
 import { toDegrees, toRadians, getJulianDate } from "./utility";
 
+function normalizeAngle(deg: number): number {
+  // returns [0, 360)
+  return ((deg % 360) + 360) % 360;
+}
+
 // Solar parameters calculation
 function calculateSolarParameters(julianDate: number): {
   declination: number;
   equationOfTime: number;
 } {
   const D = julianDate - 2451545.0;
-  const g = toRadians((357.529 + 0.98560028 * D) % 360);
-  const q = (280.459 + 0.98564736 * D) % 360;
-  const L = (q + 1.915 * Math.sin(g) + 0.02 * Math.sin(2 * g)) % 360;
+
+  // Mean anomaly (deg) and mean longitude (deg)
+  const gDeg = normalizeAngle(357.529 + 0.98560028 * D);
+  const qDeg = normalizeAngle(280.459 + 0.98564736 * D);
+
+  // Ecliptic longitude (deg)
+  const LDeg = normalizeAngle(
+    qDeg +
+      1.915 * Math.sin(toRadians(gDeg)) +
+      0.02 * Math.sin(2 * toRadians(gDeg)),
+  );
+
+  // Obliquity of the ecliptic (rad)
   const epsilon = toRadians(23.439 - 0.00000036 * D);
 
-  const RA =
-    toDegrees(
-      Math.atan2(
-        Math.cos(epsilon) * Math.sin(toRadians(L)),
-        Math.cos(toRadians(L)),
-      ),
-    ) / 15;
-  const declination = Math.asin(Math.sin(epsilon) * Math.sin(toRadians(L)));
+  // Right ascension (deg), normalized to [0, 360)
+  let RAdeg = toDegrees(
+    Math.atan2(
+      Math.cos(epsilon) * Math.sin(toRadians(LDeg)),
+      Math.cos(toRadians(LDeg)),
+    ),
+  );
+  RAdeg = normalizeAngle(RAdeg);
+  const RAhrs = RAdeg / 15;
 
-  const equationOfTime = (q / 15 - RA + 24) % 24;
+  // Declination (rad)
+  const declination = Math.asin(Math.sin(epsilon) * Math.sin(toRadians(LDeg)));
+
+  // Equation of Time (hours), small value without wrapping
+  let equationOfTime = qDeg / 15 - RAhrs; // could be around +- 0.25 h
+  if (equationOfTime > 12) equationOfTime -= 24;
+  if (equationOfTime < -12) equationOfTime += 24;
+
   return { declination, equationOfTime };
 }
 
@@ -71,11 +94,10 @@ export function calculatePrayerTimes(
   const maghribOffset = 3 / 60; // Currently set to 3 minutes after Sunset
   const maghrib = (sunset + maghribOffset + 24) % 24;
 
-  // --- Hanafi Asr ---
+  // Hanafi Asr
   const phi = toRadians(latitude);
   const delta = declination;
 
-  // Hanafi: shadow = 2×object + zenith-shadow => cot(h) = 2 + tan(|φ-δ|)
   const hAsr = Math.atan(1 / (2 + Math.tan(Math.abs(phi - delta))));
 
   // Hour angle for that elevation
