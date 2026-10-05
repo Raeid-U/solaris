@@ -21,3 +21,5 @@
 - User introduced a whitepaper outline and agreed it should be developed in parallel.
 - User requested docs that future agents can use for implementation context.
 - Created agent timeline memory under `.agents/skills/timeline`.
+- User requested a research-wiki skill to cache source-backed assertions and formulas for easier future recall.
+- Created `.agents/skills/research-wiki` and the initial `knowledge/` schema.

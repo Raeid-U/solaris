@@ -26,6 +26,11 @@ Initial planning docs have been introduced:
 - `docs/validation-plan.md`
 - `docs/decision-log.md`
 
+Research memory has also been introduced:
+
+- `knowledge/`: source-backed research wiki.
+- `.agents/skills/research-wiki`: agent instructions for using and maintaining the wiki.
+
 The user wants planning and documentation to progress before a code rewrite.
 
 ## Current Product Vision

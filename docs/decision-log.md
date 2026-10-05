@@ -106,3 +106,26 @@ Consequences:
 Follow-up:
 
 - Keep the timeline concise enough that it remains useful.
+
+## 2026-10-05: Create Research Wiki as Assertion Cache
+
+Status: accepted
+
+Decision:
+
+Create `knowledge/` as a lightweight research wiki and `.agents/skills/research-wiki` as agent-facing operating instructions for maintaining it.
+
+Context:
+
+Solaris will depend on papers, almanacs, institutional methods, scholarly input, validation datasets, and implementation decisions. Future agents need a durable place to find source-backed assertions without repeatedly rereading every source from scratch.
+
+Consequences:
+
+- Research should flow from original source to source note, concept page, assertion page, and then implementation or whitepaper reference.
+- The wiki is subordinate to primary sources.
+- Agents should consult the wiki before web-searching or implementing source-dependent formulas.
+- Full copyrighted sources should not be pasted into the repo by default.
+
+Follow-up:
+
+- Ingest the first secular sources one at a time, starting with NOAA, NREL SPA, Mohamoud 2017, and horizon/refraction materials.

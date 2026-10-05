@@ -1,0 +1,3 @@
+interface:
+  display_name: "Research Wiki"
+  short_description: "Maintain Solaris source-backed research notes and assertions"
