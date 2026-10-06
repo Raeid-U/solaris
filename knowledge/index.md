@@ -9,6 +9,7 @@ Start here before rereading PDFs, crawling source links, or implementing a formu
 ## References
 
 - [References Index](references/index.md): bibliography and source notes.
+- Current draft notes cover NOAA, NREL SPA, horizon dip/refraction, IANA timezones, USNO almanac references, Mohamoud 2017, and a public nautical almanac.
 
 ## Concepts
 
@@ -26,3 +27,4 @@ Start here before rereading PDFs, crawling source links, or implementing a formu
 - [Profile Model](../docs/profile-model.md)
 - [Validation Plan](../docs/validation-plan.md)
 - [Decision Log](../docs/decision-log.md)
+- [Scholar Research Questions](../docs/scholar-research-questions.md)

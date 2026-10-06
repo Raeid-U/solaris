@@ -31,6 +31,17 @@ Research memory has also been introduced:
 - `knowledge/`: source-backed research wiki.
 - `.agents/skills/research-wiki`: agent instructions for using and maintaining the wiki.
 
+Initial draft source notes have been ingested for:
+
+- NOAA solar calculations.
+- NREL Solar Position Algorithm.
+- Andrew T. Young's horizon dip explanation.
+- IANA timezone theory.
+- USNO Astronomical Almanac.
+- USNO Explanatory Supplement.
+- Mohamoud 2017 prayer-time calculation paper.
+- The Nautical Almanac 2023.
+
 The user wants planning and documentation to progress before a code rewrite.
 
 ## Current Product Vision
@@ -52,6 +63,6 @@ The user is working with local shuyukh and eventually wants review under qualifi
 
 ## Current Phase
 
-Phase 0: Charter, scope, documentation structure, project memory, and research scaffolding.
+Phase 1 beginning: secular research foundation and source-note ingestion.
 
 No implementation rewrite should happen until the user explicitly approves it.

@@ -23,3 +23,5 @@
 - Created agent timeline memory under `.agents/skills/timeline`.
 - User requested a research-wiki skill to cache source-backed assertions and formulas for easier future recall.
 - Created `.agents/skills/research-wiki` and the initial `knowledge/` schema.
+- User requested an initial source ingest while deferring hadith/source interpretation to scholars.
+- Added draft source notes for the initial secular/bridge source set and added a scholar research question list.

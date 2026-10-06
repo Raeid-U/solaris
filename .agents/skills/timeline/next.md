@@ -6,11 +6,15 @@ Last updated: 2026-10-05
 
 1. Review and revise the newly created planning docs with the user.
 2. Decide whether to keep the working name "Solaris" or rename the project before deeper documentation work.
-3. Expand `docs/source-matrix.md` by reviewing each listed source and extracting actual formulas, claims, assumptions, and limitations.
-4. Begin ingesting source-backed notes into `knowledge/`:
-   - source note.
-   - concept page when useful.
-   - assertion page for implementation-facing claims or formulas.
+3. Review the draft source notes with the user and correct any positioning issues.
+4. Extract implementation-facing assertion pages from the draft source notes:
+   - NOAA equation of time.
+   - NOAA solar declination.
+   - NOAA sunrise/sunset zenith convention.
+   - NREL SPA as validation reference.
+   - IANA timezone requirement.
+   - horizon dip/elevation correction.
+   - Mohamoud 2017 prayer-time formula candidates.
 5. Draft the first secular technical memo:
    - solar declination.
    - equation of time.
@@ -20,7 +24,8 @@ Last updated: 2026-10-05
    - twilight angle.
    - refraction and horizon dip.
    - timezone conversion.
-6. Draft separate prayer-method memos for:
+6. Take the scholar research questions to qualified reviewers and bring back vetted sources/answers.
+7. Draft separate prayer-method memos for:
    - Fajr.
    - Dhuhr.
    - Asr.
@@ -50,7 +55,7 @@ Open decision:
 - Which solar-position algorithm should be the first canonical implementation?
 - Should NREL SPA be used directly, adapted, or used only as a validation reference?
 - Which timezone lookup provider should be supported, if any?
-- Which source notes and assertions should be ingested before the first engine rewrite?
+- Which source notes should be converted into assertions before the first engine rewrite?
 - What primary sources should be used for each madhhab's prayer-time definitions?
 - Which Fajr/Isha twilight angles should be documented first?
 - How should high-latitude cases be represented without implying a single religious answer?
